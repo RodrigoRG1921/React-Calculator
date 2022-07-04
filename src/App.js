@@ -24,6 +24,8 @@ const calculation = (operand, result, operation) => {
         break;
       case '%':
         value = _result % _operand
+      default:
+        return
     }
     return value.toString()
 }
@@ -33,7 +35,6 @@ function App() {
   const [result, setResult] = useState(0);
   const [operation, setOperation] = useState('');
   const [isEmpty, setIsEmpty] = useState(true);
-  const [isPressed, setIsPressed] = useState(false);
 
   const handleDigitClick = (tag) => {
     if (operand === '0' || operand === '-') setOperand("")
@@ -59,15 +60,18 @@ function App() {
 
   const handleOperator = (tag) => {
     
+    
+
     setIsEmpty(true)
-    if (result == 0 && operand !== '-') {
+    if (result === 0 && operand !== '-') {
       setOperation(tag)
       setResult(operand)
     }
-    if (operation !== '' && result !== 0 && operand !== '-') {
+    if (result !== 0 && operand !== '-') {
       setOperation(tag)
       setResult(calculation(operand, result, operation))
     }
+    if (result !== 0 && operand === '-') setOperation(tag)
     setOperand("-");
 
   }

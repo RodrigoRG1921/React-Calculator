@@ -1,7 +1,7 @@
 import React from 'react'
 
 function formatOperand(operand) {
-  if (operand == '-' || operand == 0 || operand == null || isNaN(operand)) return operand
+  if (operand === '-' || operand === 0 || operand === null || isNaN(operand)) return operand
   const [integer, decimal] = operand.split(".")
   if (decimal == null) return INTEGER_FORMATTER.format(integer)
   return `${INTEGER_FORMATTER.format(integer)}.${decimal}`
