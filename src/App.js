@@ -24,8 +24,9 @@ const calculation = (operand, result, operation) => {
         break;
       case '%':
         value = _result % _operand
+        break;
       default:
-        return
+        console.log("Error")
     }
     return value.toString()
 }
